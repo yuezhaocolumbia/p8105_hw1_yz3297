@@ -9,7 +9,11 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 ```
 
-library(tidyverse)
+
+
+## Problem 1
+This builds a data frame.
+```{r}
 example_df = tibble(
   vec_numeric = runif(10, min = 0 ,max = 5),
   
@@ -19,6 +23,26 @@ example_df = tibble(
   
   vec_factor = factor(c("Asia", "Asia", "Asia", "America", "Asia", "Europe", "Europe", "Asia", "America", "Europe"))
 )
+```
+
+
+
+This takes the mean of the vectors.
+The numeric and logical vectors works when I take the mean
+```{r}
+mean(example_df$vec_numeric)
+mean(example_df$vec_logical)
+```
+
+
+The character and factor vectors do not work when I take the mean
+```{r}
+mean(example_df$vec_char)
+mean(example_df$vec_factor)
+```
+
+This is because mean can only be calculated for numeric number and logical vector. 
+Logical Vector works because true is taken as 1 and false is taken as 0.
 
 
 
