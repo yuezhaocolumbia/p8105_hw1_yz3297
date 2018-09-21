@@ -46,10 +46,43 @@ Logical Vector works because true is taken as 1 and false is taken as 0.
 
 
 
+Code Chunk for Converting Variable Type 1 (no output)
+```{r eval = FALSE}
+as.numeric(example_df$vec_logical)
+as.numeric(example_df$vec_char)
+as.numeric(example_df$vec_factor)
+```
+
+Converting from logical and factor to numeric is fine but converting character vector to numeric shows "NA".
 
 
 
-## R Markdown
+Code Chunk for Converting Variable Type 2
+```{r}
+as.numeric(as.factor(example_df$vec_char))
+as.numeric(as.character(example_df$vec_factor))
+```
+
+The first one works fine and the second one returns "NA".
+
+
+## Problem 2
+
+```{r}
+example_df = tibble(
+  vec_numeric = runif(10, min = 0 ,max = 5),
+  
+  vec_logical = (vec_numeric >= 2),
+  
+  vec_char = c("China", "Japan", "India", "US", "Korea", "France", "Germany", "Qatar", "Brazil", "England"),
+  
+  vec_factor = factor(c("Asia", "Asia", "Asia", "America", "Asia", "Europe", "Europe", "Asia", "America", "Europe"))
+)
+```
+
+
+
+
 
 This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
