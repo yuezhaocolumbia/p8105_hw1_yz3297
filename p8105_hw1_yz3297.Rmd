@@ -69,30 +69,35 @@ The first one works fine and the second one returns "NA".
 ## Problem 2
 
 ```{r}
-example_df = tibble(
-  vec_numeric = runif(10, min = 0 ,max = 5),
-  
-  vec_logical = (vec_numeric >= 2),
-  
-  vec_char = c("China", "Japan", "India", "US", "Korea", "France", "Germany", "Qatar", "Brazil", "England"),
-  
-  vec_factor = factor(c("Asia", "Asia", "Asia", "America", "Asia", "Europe", "Europe", "Asia", "America", "Europe"))
+example_df2 = tibble(
+   x = rnorm(1000),
+   y = rnorm(1000),
+   vec_logical2 = (x + y > 0),
+   vec_numeric2 = as.numeric(vec_logical2),
+   vec_factor2 = as.factor(vec_logical2)
 )
 ```
 
+The size of the dataset is 
+`r nrow(example_df2)`* `r ncol(example_df2)`.
+The mean of x is `r mean(example_df2$x)` and the median of x is `r median(example_df2$x)`.
+
+The proportion of cases for which the logical vector is True is `r as.numeric(example_df2$vec_logical2)`.
 
 
 
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
-```{r cars}
-summary(cars)
-```
 
-## Including Plots
+
+
+
+
+
+
+
+
 
 You can also embed plots, for example:
 
