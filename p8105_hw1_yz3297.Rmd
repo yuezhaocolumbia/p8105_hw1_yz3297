@@ -31,6 +31,7 @@ This takes the mean of the vectors.
 The numeric and logical vectors works when I take the mean
 ```{r}
 mean(example_df$vec_numeric)
+
 mean(example_df$vec_logical)
 ```
 
@@ -38,6 +39,7 @@ mean(example_df$vec_logical)
 The character and factor vectors do not work when I take the mean
 ```{r}
 mean(example_df$vec_char)
+
 mean(example_df$vec_factor)
 ```
 
@@ -49,7 +51,9 @@ Logical Vector works because true is taken as 1 and false is taken as 0.
 Code Chunk for Converting Variable Type 1 (no output)
 ```{r eval = FALSE}
 as.numeric(example_df$vec_logical)
+
 as.numeric(example_df$vec_char)
+
 as.numeric(example_df$vec_factor)
 ```
 
@@ -60,6 +64,7 @@ Converting from logical and factor to numeric is fine but converting character v
 Code Chunk for Converting Variable Type 2
 ```{r}
 as.numeric(as.factor(example_df$vec_char))
+
 as.numeric(as.character(example_df$vec_factor))
 ```
 
@@ -71,38 +76,38 @@ The first one works fine and the second one returns "NA".
 ```{r}
 example_df2 = tibble(
    x = rnorm(1000),
+   
    y = rnorm(1000),
+   
    vec_logical2 = (x + y > 0),
+   
    vec_numeric2 = as.numeric(vec_logical2),
+   
    vec_factor2 = as.factor(vec_logical2)
+   
 )
 ```
 
-The size of the dataset is 
-`r nrow(example_df2)`* `r ncol(example_df2)`.
+
+The size of the dataset is  `r nrow(example_df2)`* `r ncol(example_df2)`.
+
 The mean of x is `r mean(example_df2$x)` and the median of x is `r median(example_df2$x)`.
 
-The proportion of cases for which the logical vector is True is `r as.numeric(example_df2$vec_logical2)`.
+The proportion of cases for which the logical vector is True is `r mean(as.numeric(example_df2$vec_logical2))`.
 
 
+```{r}
+ggplot(example_df2, aes(x = x, y = y, color=vec_logical2)) + geom_point()
 
+ggsave("scatter_plot.pdf", height = 4, width = 6)
 
+ggplot(example_df2, aes(x = x, y = y, color=vec_numeric2)) + geom_point()
 
-
-
-
-
-
-
-
-
-
-
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+ggplot(example_df2, aes(x = x, y = y, color=vec_factor2)) + geom_point()
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+
+
+
+
