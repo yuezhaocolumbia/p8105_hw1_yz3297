@@ -1,0 +1,46 @@
+---
+title: "p8105_hw1_yz3297"
+author: "Yue Zhao"
+date: "9/20/2018"
+output: github_document
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+library(tidyverse)
+example_df = tibble(
+  vec_numeric = runif(10, min = 0 ,max = 5),
+  
+  vec_logical = (vec_numeric >= 2),
+  
+  vec_char = c("China", "Japan", "India", "US", "Korea", "France", "Germany", "Qatar", "Brazil", "England"),
+  
+  vec_factor = factor(c("Asia", "Asia", "Asia", "America", "Asia", "Europe", "Europe", "Asia", "America", "Europe"))
+)
+
+
+
+
+
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
