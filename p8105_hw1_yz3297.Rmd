@@ -106,7 +106,8 @@ ggplot(example_df2, aes(x = x, y = y, color=vec_numeric2)) + geom_point()
 ggplot(example_df2, aes(x = x, y = y, color=vec_factor2)) + geom_point()
 ```
 
-
+There is a color scale in the second scatter plot, but only the color with 0 and 1 are displayed in the scatter plot
+because they were converted from a logical vector.
 
 
 
